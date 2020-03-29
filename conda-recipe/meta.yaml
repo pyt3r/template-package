@@ -1,0 +1,23 @@
+package:
+  name: template
+  version: 0.0.1
+
+about:
+  author : pyt3r
+  license_file: LICENSE
+  summary: some summary
+
+source:
+  path: ..
+
+build:
+  entry_points:
+    - template-hello = template.scripts.hello:world
+
+requirements:
+  build:
+    - python>= 3
+    - pyyaml
+
+  run:
+    - python
