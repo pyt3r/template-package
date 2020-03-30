@@ -2,6 +2,7 @@ import unittest
 
 
 class Test(unittest.TestCase):
+
     def test_module(self):
         from template.module import covered
         return covered()
