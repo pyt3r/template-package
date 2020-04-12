@@ -1,5 +1,5 @@
 import unittest
-from template.module import covered
+from package.module import covered
 
 
 class Test(unittest.TestCase):

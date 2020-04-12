@@ -1,11 +1,11 @@
 package:
-  name: template
+  name: pyt3r_template
   version: 0.0.1
 
 about:
   author : pyt3r
   license_file: LICENSE
-  summary: some summary
+  summary: a template package
 
 source:
   path: ..

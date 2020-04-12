@@ -12,7 +12,7 @@ steps:
     displayName: Add conda to PATH
 
   - script: conda env create --name test-env --quiet --file ci/test-env-requirements.yml
-    displayName: Create Conda environment
+    displayName: Create a conda test env
 
   - bash: |
       source activate test-env;
@@ -20,13 +20,13 @@ steps:
       conda build . --output-folder=../builds;
       conda install ../builds/**/*.tar.bz2;
       rm -rf ../builds;
-    displayName: Build package to be tested
+    displayName: Build and add the package to the test env
 
   - bash: |
       source activate test-env;
       cd tests;
       pytest . --doctest-modules --junitxml=junit/test-results.xml --cov --cov-report=xml;
-    displayName: Run tests against package
+    displayName: Run the tests against the package
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
