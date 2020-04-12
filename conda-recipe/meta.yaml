@@ -12,7 +12,7 @@ source:
 
 build:
   entry_points:
-    - template-hello = template.scripts.hello:world
+    - pyt3r_template-hello = template.scripts.hello:world
 
 requirements:
   build:
