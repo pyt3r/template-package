@@ -2,7 +2,6 @@
 
 trigger:
   - master
-  - set-up-azure-pipeline
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -12,18 +11,22 @@ steps:
   - bash: echo "##vso[task.prependpath]$CONDA/bin"
     displayName: Add conda to PATH
 
-  - bash: conda create --yes --quiet --name myEnvironment
-    displayName: Create environment
+  - script: conda env create --name test-env --quiet --file ci/test-env-requirements.yml
+    displayName: Create Conda environment
 
   - bash: |
-      source activate myEnvironment
-      conda install --yes --quiet --name myEnvironment pytest pytest-cov
-    displayName: Install packages for test environment
+      source activate test-env;
+      mkdir ../builds;
+      conda build . --output-folder=../builds;
+      conda install ../builds/**/*.tar.bz2;
+      rm -rf ../builds;
+    displayName: Build package to be tested
 
   - bash: |
-      source activate myEnvironment
-      pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov --cov-report=xml
-    displayName: Run Tests
+      source activate test-env;
+      cd tests;
+      pytest . --doctest-modules --junitxml=junit/test-results.xml --cov --cov-report=xml;
+    displayName: Run tests against package
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()

@@ -1,0 +1,7 @@
+name: test-env
+channels:
+  - defaults
+dependencies:
+  - pytest
+  - pytest-cov
+  - conda-build

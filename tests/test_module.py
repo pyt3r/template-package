@@ -1,11 +1,11 @@
 import unittest
+from template.module import covered
 
 
 class Test(unittest.TestCase):
 
     def test_module(self):
-        from template.module import covered
-        return covered()
+        assert covered() is not None
 
 
 if __name__ == '__main__':
