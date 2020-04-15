@@ -5,11 +5,14 @@ A template python package containing the following:
 
 ## Prerequisites
 * [(mini)conda](https://docs.conda.io/en/latest/miniconda.html)
+* [python](https://www.python.org/) >= 3.7
+* Unix
 
-## Conda
+## Conda Build and Test 
+
 1. Create and activate a conda environment:
     ```
-    $ conda create env --name test-env --file ci/test-env-requirements.yml
+    $ conda env create --name test-env --file ci/test-env-requirements.yml python=3.7
     $ conda activate test-env
     ```
 
@@ -18,32 +21,46 @@ A template python package containing the following:
     (test-env) $ cd ..
     (test-env) $ mkdir tmp-build
     (test-env) $ conda build template-package --output-folder=tmp-build
-    (test-env) $ conda install tmp-build/**/pyt3r_template**.tar.bz2
-    (test-env) $ rm -r tmp-build
+    (test-env) $ conda install tmp-build/**/template*.tar.bz2
     ```
 
-3. Run tests against the template package:
+3. Run the tests against the template package and view the report:
     ```
-    (test-env) $ pytest template-package/tests
-    ```
-
-4. Test the entry point defined in [conda-recipe/meta.yaml](https://github.com/pyt3r/template-package/blob/master/conda-recipe/meta.yaml)
-    ```
-    (test-env) $ pyt3r_template-hello
+    (test-env) $ coverage run -m --include=**/template/* --omit=**/test_*.py unittest discover template-package/tests
+    (test-env) $ coverage report -m
+    (test-env) $ rm -r .coverage
     ```
 
-5. Deactivate
+4. (Optional) Test the entry point defined in [conda-recipe/meta.yaml](https://github.com/pyt3r/template-package/blob/master/conda-recipe/meta.yaml)
+    ```
+    (test-env) $ template-entry-point
+    ```
+
+5. (Optional) Upload the artifact (requires an Anaconda account)
+    ```
+    (test-env) $ anaconda upload tmp-build/**/template*.tar.bz2
+    ```
+
+6. (Optional) Deactivate
     ```
     (test-env) $ conda deactivate
    
-   $ echo "and we're back to normal"
+    $ echo "..and we're back to normal"
     ```
 
-## Azure Pipelines
-Each commit (and PR) to master invokes the [azure-pipelines.yml](https://github.com/pyt3r/template-package/blob/master/azure-pipelines.yml) script, which encapsulates the above steps in an automated manner.
 
-The latest build status of the template-package (incl. coverage reports, etc.) may be found at the following link:
-* [Build Status: pyt3r_template](https://dev.azure.com/pyt3rb/template%20pipeline%20for%20a%20template%20python%20package/_build)
+
+## Azure Pipelines
+Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](https://github.com/pyt3r/template-package/blob/master/azure-pipelines.yml) script, which encapsulates steps 1 through 3 in an automated manner.
+
+The latest build status of the template-package (incl. coverage reports) may be found [here](https://dev.azure.com/pyt3rb/template%20pipeline%20for%20a%20template%20python%20package/_build).
+
+
+## Final Artifact
+Installation ([noarch](https://anaconda.org/pyt3r/template)):
+```
+$ conda install -c pyt3r template
+```
 
 ## Authors
 
@@ -51,4 +68,4 @@ The latest build status of the template-package (incl. coverage reports, etc.) m
 
 ## License
 
-[MIT License](https://github.com/pyt3r/plandas-package/blob/master/LICENSE)
+* [MIT License](https://github.com/pyt3r/template-package/blob/master/LICENSE)

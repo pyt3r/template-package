@@ -1,22 +1,23 @@
 package:
-  name: pyt3r_template
+  name: template
   version: 0.0.1
 
 about:
   author : pyt3r
   license_file: LICENSE
-  summary: a template package
+  summary: a template python package
 
 source:
   path: ..
 
 build:
+  noarch: generic
   entry_points:
-    - pyt3r_template-hello = template.scripts.hello:world
+    - template-entry-point = template.scripts.hello:world
 
 requirements:
   build:
-    - python>= 3
+    - python=3.7
     - pyyaml
 
   run:
