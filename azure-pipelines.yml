@@ -38,7 +38,7 @@ steps:
       source activate test-env
       mkdir ../$(CONDA_BUILD)
       conda build . --output-folder=../$(CONDA_BUILD)
-      conda install ../builds/**/*.tar.bz2
+      conda install ../$(CONDA_BUILD)/**/*.tar.bz2
     displayName: Build and add package to test env
 
   - script: |
