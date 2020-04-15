@@ -53,7 +53,7 @@ A template python package containing the following:
 ## Azure Pipelines
 Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](https://github.com/pyt3r/template-package/blob/master/azure-pipelines.yml) script, which encapsulates steps 1 through 3 in an automated manner.
 
-The latest build status of the template-package (incl. coverage reports) may be found [here](https://dev.azure.com/pyt3rb/template%20pipeline%20for%20a%20template%20python%20package/_build).
+The latest build status of the template-package (incl. coverage reports) may be found [here](https://dev.azure.com/pyt3rb/template/_build).
 
 
 ## Final Artifact
