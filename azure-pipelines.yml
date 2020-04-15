@@ -21,7 +21,9 @@ steps:
 
   - script: |
       export PACKAGE_NAME=template
+      export CONDA_PACKAGE=conda-package
       echo "##vso[task.setvariable variable=PACKAGE_NAME]$PACKAGE_NAME"
+      echo "##vso[task.setvariable variable=CONDA_PACKAGE]CONDA_PACKAGE"
     displayName: Set environment variable
 
   - script: |
@@ -34,8 +36,8 @@ steps:
 
   - script: |
       source activate test-env
-      mkdir ../builds
-      conda build . --output-folder=../builds
+      mkdir ../$(CONDA_PACKAGE)
+      conda build . --output-folder=../$(CONDA_PACKAGE)
       conda install ../builds/**/*.tar.bz2
     displayName: Build and add package to test env
 
@@ -54,13 +56,13 @@ steps:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
 
-
   - task: CopyFiles@2
     inputs:
+      sourceFolder: $(Build.SourcesDirectory)/../$(CONDA_PACKAGE)
       targetFolder: $(Build.ArtifactStagingDirectory)
 
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'conda-package'
+      ArtifactName: '$(CONDA_PACKAGE)'
       publishLocation: 'Container'
