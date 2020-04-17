@@ -32,7 +32,7 @@
 
 <br>
 
-# Table of Contents
+## Table of Contents
 
 - [Prerequisites](#prerequisites)
 - [Features](#features)
