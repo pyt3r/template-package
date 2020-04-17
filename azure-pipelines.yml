@@ -2,7 +2,6 @@
 
 trigger:
   - master
-  - release-pipeline
 
 strategy:
   matrix:
