@@ -1,21 +1,59 @@
-# template-package : python + azure + anaconda
+<h1 align="center" style="margin:1em;">
+    template-package : python + azure + anaconda
+</h1>
 
-[![Azure Badge](https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=https://img.shields.io/azure-devops/build/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
-[![Anaconda Badge](https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=https://img.shields.io/conda/v/pyt3r/template)](https://anaconda.org/pyt3r/template)
-[![Platform](https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=https://img.shields.io/conda/pn/pyt3r/template)](https://anaconda.org/pyt3r/template)
-[![Coverage](https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=https://img.shields.io/azure-devops/coverage/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
-[![Downloads](https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&url=https://img.shields.io/conda/dn/pyt3r/template)](https://anaconda.org/pyt3r/template)
+<h4 align="center">
+    The template-package is a boilerplate python repo for setting up a CI pipeline
+</h4>
 
-The **template-package** is a boilerplate python repo with the following features:
-* a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
-* a simple CI [Azure Pipeline]((https://dev.azure.com/pyt3r/template/_build)) to build, test, and publish a conda package artifact, which can then be uploaded to [Anaconda Cloud](https://anaconda.org/pyt3r/template)
+<p align="center">
+
+<a href="https://dev.azure.com/pyt3r/template/_build">
+<img src="https://img.shields.io/azure-devops/build/pyt3r/template/3"
+ alt="Builds" /></a>
+
+<a href="https://anaconda.org/pyt3r/template">
+<img src="https://img.shields.io/conda/v/pyt3r/template"
+ alt="Version" /></a>
+ 
+<a href="https://anaconda.org/pyt3r/template">
+<img src="https://img.shields.io/conda/pn/pyt3r/template"
+ alt="Platform" /></a>
+
+<a href="https://dev.azure.com/pyt3r/template/_build">
+<img src="https://img.shields.io/azure-devops/coverage/pyt3r/template/3"
+ alt="Coverage" /></a>
+ 
+<a href="https://anaconda.org/pyt3r/template">
+<img src="https://img.shields.io/conda/dn/pyt3r/template"
+ alt="Downloads" /></a>
+
+</p>
+
+<br>
+
+# Table of Contents
+
+- [Prerequisites](#Prerequisites)
+- [Features](#Features)
+- [Conda Build](#Conda Build)
+- [Azure Pipelines](#Azure-CI)
+- [Artifact](#Artifact)
+- [Author](#Author)
+- [License](#License)
+
+
+## Features
+* invoke a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
+* trigger a simple CI [Azure Pipeline]((https://dev.azure.com/pyt3r/template/_build)) to build, test, and publish a conda package artifact, which can be uploaded to [Anaconda Cloud](https://anaconda.org/pyt3r/template)
 
 ## Prerequisites
 * [(mini)conda](https://docs.conda.io/en/latest/miniconda.html)
 * [python](https://www.python.org/) >= 3.7
 * Unix
 
-## A Simple Conda Build Recipe
+
+## Conda Build
 
 1. Create and activate a conda environment:
     ```
@@ -56,19 +94,19 @@ The **template-package** is a boilerplate python repo with the following feature
     ```
 
 
-## A Simple Azure Pipeline
+## Azure Pipelines
 Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azure-pipelines.yml) script, which automates the Steps 1 through 3 above.
 
 The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build).
 
-## Final Artifact
-Upon the conclusion of the pipeline, users may access and upload the published artifact to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
+## Artifact
+Upon the conclusion of the pipeline, users may access and upload the published artifact (a conda package) to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
 
 ```
 $ conda install -c pyt3r template
 ```
 
-## Authors
+## Author
 
 * **pyt3r**
 
