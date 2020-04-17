@@ -4,23 +4,20 @@
 [build]: https://dev.azure.com/pyt3r/template/_apis/build/status/pyt3r.template-package
 [coverage]: https://img.shields.io/azure-devops/coverage/pyt3r/template/3
 [version]: https://anaconda.org/pyt3r/template/badges/version.svg
-[lrd]: https://anaconda.org/pyt3r/template/badges/latest_release_date.svg
-[lrrd]: https://anaconda.org/pyt3r/template/badges/latest_release_relative_date.svg
 [platforms]: https://anaconda.org/pyt3r/template/badges/platforms.svg
 [downloads]: https://anaconda.org/pyt3r/template/badges/downloads.svg
 [conda]: https://anaconda.org/pyt3r/template/badges/installer/conda.svg
 
-
-The **template-package** is a boilerplate python repo supporting the following features:
+The **template-package** is a boilerplate python repo with the following features:
 * a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
-* a simple [Azure Pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) to build, test, and publish a conda package artifact 
+* a simple CI [Azure Pipeline]((https://dev.azure.com/pyt3r/template/_build)) to build, test, and publish a conda package artifact, which can then be uploaded to [Anaconda Cloud](https://anaconda.org/pyt3r/template)
 
 ## Prerequisites
 * [(mini)conda](https://docs.conda.io/en/latest/miniconda.html)
 * [python](https://www.python.org/) >= 3.7
 * Unix
 
-## A Simple Conda Build 
+## A Simple Conda Build Recipe
 
 1. Create and activate a conda environment:
     ```
