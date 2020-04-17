@@ -1,4 +1,4 @@
-# template pipeline for template python package
+# template pipeline for a template python package
 
 trigger:
   - master

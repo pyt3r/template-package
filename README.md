@@ -1,14 +1,26 @@
-# template-package
-A template python package containing the following:
+# template-package : python + azure + anaconda
+![build] ![version] ![conda] ![platforms] ![coverage] ![downloads]
+
+[build]: https://dev.azure.com/pyt3r/template/_apis/build/status/pyt3r.template-package
+[coverage]: https://img.shields.io/azure-devops/coverage/pyt3r/template/3
+[version]: https://anaconda.org/pyt3r/template/badges/version.svg
+[lrd]: https://anaconda.org/pyt3r/template/badges/latest_release_date.svg
+[lrrd]: https://anaconda.org/pyt3r/template/badges/latest_release_relative_date.svg
+[platforms]: https://anaconda.org/pyt3r/template/badges/platforms.svg
+[downloads]: https://anaconda.org/pyt3r/template/badges/downloads.svg
+[conda]: https://anaconda.org/pyt3r/template/badges/installer/conda.svg
+
+
+The **template-package** is a boilerplate python repo supporting the following features:
 * a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
-* a simple [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) yaml to automate builds and run tests 
+* a simple [Azure Pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) to build, test, and publish a conda package artifact 
 
 ## Prerequisites
 * [(mini)conda](https://docs.conda.io/en/latest/miniconda.html)
 * [python](https://www.python.org/) >= 3.7
 * Unix
 
-## Conda Build and Test 
+## A Simple Conda Build 
 
 1. Create and activate a conda environment:
     ```
@@ -31,7 +43,7 @@ A template python package containing the following:
     (test-env) $ rm -r .coverage
     ```
 
-4. (Optional) Test the entry point defined in [conda-recipe/meta.yaml](https://github.com/pyt3r/template-package/blob/master/conda-recipe/meta.yaml)
+4. (Optional) Test the entry point defined in [conda-recipe/meta.yaml](conda-recipe/meta.yaml)
     ```
     (test-env) $ template-entry-point
     ```
@@ -49,15 +61,16 @@ A template python package containing the following:
     ```
 
 
+## A Simple Azure Pipeline
+Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azure-pipelines.yml) script, which automates the Steps 1 through 3 above.
 
-## Azure Pipelines
-Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](https://github.com/pyt3r/template-package/blob/master/azure-pipelines.yml) script, which encapsulates steps 1 through 3 in an automated manner.
-
-The latest build status of the template-package (incl. coverage reports) may be found [here](https://dev.azure.com/pyt3rb/template/_build).
+The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build).
 
 
 ## Final Artifact
-Installation ([noarch](https://anaconda.org/pyt3r/template)):
+
+Upon the conclusion of the pipeline, users may access and upload the published artifact to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
+
 ```
 $ conda install -c pyt3r template
 ```
@@ -68,4 +81,4 @@ $ conda install -c pyt3r template
 
 ## License
 
-* [MIT License](https://github.com/pyt3r/template-package/blob/master/LICENSE)
+* [MIT License](LICENSE)
