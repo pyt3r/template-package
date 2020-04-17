@@ -34,13 +34,13 @@
 
 # Table of Contents
 
-- [Prerequisites](#Prerequisites)
-- [Features](#Features)
-- [Conda Build](#Conda Build)
-- [Azure Pipelines](#Azure-CI)
-- [Artifact](#Artifact)
-- [Author](#Author)
-- [License](#License)
+- [Prerequisites](#prerequisites)
+- [Features](#features)
+- [Conda Build](#conda-build)
+- [Azure Pipelines](#azure-pipelines)
+- [Artifact](#artifact)
+- [Author](#author)
+- [License](#license)
 
 
 ## Features
