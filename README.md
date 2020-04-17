@@ -1,10 +1,10 @@
 # template-package : python + azure + anaconda
 
-[![Azure-Pipelines Badge](https://dev.azure.com/pyt3r/template/_apis/build/status/pyt3r.template-package)](https://dev.azure.com/pyt3r/template/_build)
-[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/version.svg)](https://anaconda.org/pyt3r/template)
-[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/platforms.svg)](https://anaconda.org/pyt3r/template)
-[![Azure-Coverage Badge](https://img.shields.io/azure-devops/coverage/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
-[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/downloads.svg)](https://anaconda.org/pyt3r/template)
+[![Azure Badge](https://img.shields.io/azure-devops/build/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
+[![Anaconda Badge](https://img.shields.io/conda/v/pyt3r/template)](https://anaconda.org/pyt3r/template)
+[![Platform](https://img.shields.io/conda/pn/pyt3r/template)](https://anaconda.org/pyt3r/template)
+[![Coverage](https://img.shields.io/azure-devops/coverage/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
+[![Downloads](https://img.shields.io/conda/dn/pyt3r/template)](https://anaconda.org/pyt3r/template)
 
 The **template-package** is a boilerplate python repo with the following features:
 * a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
