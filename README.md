@@ -1,12 +1,10 @@
 # template-package : python + azure + anaconda
-![build] ![version] ![conda] ![platforms] ![coverage] ![downloads]
 
-[build]: https://dev.azure.com/pyt3r/template/_apis/build/status/pyt3r.template-package
-[coverage]: https://img.shields.io/azure-devops/coverage/pyt3r/template/3
-[version]: https://anaconda.org/pyt3r/template/badges/version.svg
-[platforms]: https://anaconda.org/pyt3r/template/badges/platforms.svg
-[downloads]: https://anaconda.org/pyt3r/template/badges/downloads.svg
-[conda]: https://anaconda.org/pyt3r/template/badges/installer/conda.svg
+[![Azure-Pipelines Badge](https://dev.azure.com/pyt3r/template/_apis/build/status/pyt3r.template-package)](https://dev.azure.com/pyt3r/template/_build)
+[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/version.svg)](https://anaconda.org/pyt3r/template)
+[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/platforms.svg)](https://anaconda.org/pyt3r/template)
+[![Azure-Coverage Badge](https://img.shields.io/azure-devops/coverage/pyt3r/template/3)](https://dev.azure.com/pyt3r/template/_build)
+[![Anaconda-Server Badge](https://anaconda.org/pyt3r/template/badges/downloads.svg)](https://anaconda.org/pyt3r/template)
 
 The **template-package** is a boilerplate python repo with the following features:
 * a simple [conda-build](https://docs.conda.io/projects/conda-build/en/latest/) recipe
@@ -63,9 +61,7 @@ Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azur
 
 The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build).
 
-
 ## Final Artifact
-
 Upon the conclusion of the pipeline, users may access and upload the published artifact to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
 
 ```
