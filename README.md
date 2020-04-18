@@ -64,9 +64,9 @@
 2. Build and add the template package to the environment:
     ```
     (test-env) $ cd ..
-    (test-env) $ mkdir tmp-build
-    (test-env) $ conda build template-package --output-folder=tmp-build
-    (test-env) $ conda install tmp-build/**/template*.tar.bz2
+    (test-env) $ mkdir conda-build
+    (test-env) $ conda build template-package --output-folder=conda-build
+    (test-env) $ conda install conda-build/**/template*.tar.bz2
     ```
 
 3. Run the tests against the template package and view the report:
@@ -83,7 +83,7 @@
 
 5. (Optional) Upload the artifact (requires an Anaconda account)
     ```
-    (test-env) $ anaconda upload tmp-build/**/template*.tar.bz2
+    (test-env) $ anaconda upload conda-build/**/template*.tar.bz2
     ```
 
 6. (Optional) Deactivate
@@ -97,7 +97,14 @@
 ## Azure Pipelines
 Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azure-pipelines.yml) script, which automates the Steps 1 through 3 above.
 
-The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build).
+The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build):
+
+<p align="center">
+<img src="images/artifacts1.png" width="40%">
+<br>
+<br>
+<img src="images/artifacts2.png" width="50%">
+</p>
 
 ## Artifact
 Upon the conclusion of the pipeline, users may access and upload the published artifact (a conda package) to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
