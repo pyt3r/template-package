@@ -101,7 +101,7 @@ The pipeline concludes by publishing the coverage report and conda package artif
 
 <p align="center">
 <img src="images/artifacts1.png" width="35%">
-    
+<br>
 <img src="images/artifacts2.png" width="50%">
 </p>
 
