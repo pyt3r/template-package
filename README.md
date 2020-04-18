@@ -99,10 +99,10 @@ Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azur
 
 The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build):
 
+<img src="images/artifacts1.png" width="50%">
 
-![Artifacts-1](images/artifacts1.png)
+<img src="images/artifacts2.png" width="50%">
 
-![Artifacts-1](images/artifacts2.png)
 
 ## Artifact
 Upon the conclusion of the pipeline, users may access and upload the published artifact (a conda package) to [Anaconda Cloud](https://anaconda.org/pyt3r/template) where it may be installed as follows: 
