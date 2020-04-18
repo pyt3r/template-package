@@ -100,8 +100,9 @@ Each commit (and PR) to the master branch invokes the [azure-pipelines.yml](azur
 The pipeline concludes by publishing the coverage report and conda package artifact on [Azure](https://dev.azure.com/pyt3r/template/_build):
 
 <p align="center">
-    <img src="images/artifacts1.png" width="35%">
-    <img src="images/artifacts2.png" width="50%">
+<img src="images/artifacts1.png" width="35%">
+    
+<img src="images/artifacts2.png" width="50%">
 </p>
 
 ## Artifact
