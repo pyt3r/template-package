@@ -2,6 +2,7 @@
 
 trigger:
   - master
+  - makefile+azure
 
 strategy:
   matrix:
@@ -19,10 +20,8 @@ steps:
     displayName: 'Use Python $(pythonVersion)'
 
   - script: |
-      export PACKAGE_NAME=template
-      export CONDA_BUILD=conda-build
-      echo "##vso[task.setvariable variable=PACKAGE_NAME]$PACKAGE_NAME"
-      echo "##vso[task.setvariable variable=CONDA_BUILD]$CONDA_BUILD"
+      export CONDA_ARTIFACT_NAME=conda-build
+      echo "##vso[task.setvariable variable=CONDA_ARTIFACT_NAME]$CONDA_ARTIFACT_NAME"
     displayName: Set environment variable
 
   - script: |
@@ -35,18 +34,12 @@ steps:
 
   - script: |
       source activate test-env
-      mkdir ../$(CONDA_BUILD)
-      conda build . --output-folder=../$(CONDA_BUILD)
-      conda install ../$(CONDA_BUILD)/**/*.tar.bz2
-    displayName: Build and add package to test env
+      make conda-build-and-install
+    displayName: Build and install the package
 
   - script: |
       source activate test-env
-      cd tests
-      coverage run -m --include=**/$(PACKAGE_NAME)/* --omit=**/test_*.py unittest discover .
-      coverage report -m
-      coverage html
-      coverage xml
+      make test-package
     displayName: Run tests against the package
 
   - task: PublishCodeCoverageResults@1
@@ -56,12 +49,15 @@ steps:
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
 
   - task: CopyFiles@2
+    displayName: 'Copy Artifacts'
     inputs:
-      sourceFolder: $(Build.SourcesDirectory)/../$(CONDA_BUILD)
-      targetFolder: $(Build.ArtifactStagingDirectory)
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: |
+        **/*.tar.bz2
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: '$(CONDA_BUILD)'
+      ArtifactName: '$(CONDA_ARTIFACT_NAME)'
       publishLocation: 'Container'
