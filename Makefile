@@ -1,3 +1,9 @@
+pep8:
+	python -m autopep8 template/ -a -r --in-place
+
+lint:
+	python -m flake8 template/ --count --show-source --statistics
+
 test:
 	coverage run -m unittest discover tests/
 	coverage report -m
@@ -22,4 +28,4 @@ clean:
 	rm -rf .coverage htmlcov coverage.xml tests/.coverage tests/htmlcov tests/coverage.xml
 	rm -rf channeldata.json index.html noarch/ osx-64/ linux-32/ linux-64/ win-32/ win-64/
 
-.PHONY: test clean conda-build-and-install test-package
+.PHONY: pep8 lint test clean conda-build-and-install test-package

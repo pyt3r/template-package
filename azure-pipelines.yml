@@ -34,6 +34,11 @@ steps:
 
   - script: |
       source activate test-env
+      make lint
+    displayName: Running Linter
+
+  - script: |
+      source activate test-env
       make conda-build-and-install
     displayName: Build and install the package
 
