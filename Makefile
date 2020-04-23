@@ -4,7 +4,7 @@ test-env:
 	conda env create --file ci/test-env-requirements.yml
 
 add-packages:
-	conda install autopep8 -y
+	conda install autopep8 sphinx -y
 
 pep8:
 	python -m autopep8 ${PACKAGE_NAME}/ -a -r --in-place
@@ -32,6 +32,9 @@ test-package:
 	conda uninstall ${PACKAGE_NAME} -y --force && \
 	cd ..
 
+apidoc:
+	sphinx-apidoc ${PACKAGE_NAME} -o docs/source
+
 docs:
 	cd docs/ && \
 	make html && \
@@ -45,4 +48,4 @@ clean:
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/
 
-.PHONY: test-env add-packages pep8 lint test conda-build-and-install test-package docs clean
+.PHONY: test-env add-packages pep8 lint test conda-build-and-install test-package apidoc docs clean
