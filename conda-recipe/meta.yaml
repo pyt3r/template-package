@@ -1,6 +1,6 @@
 package:
   name: template
-  version: 0.0.3
+  version: 0.0.4dev
 
 about:
   author : pyt3r
@@ -11,7 +11,7 @@ source:
   path: ..
 
 build:
-  noarch: generic
+  noarch: python
   entry_points:
     - template-entry-point = template.scripts.hello:world
 

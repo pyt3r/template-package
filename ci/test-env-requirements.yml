@@ -4,3 +4,4 @@ channels:
 dependencies:
   - conda-build
   - coverage
+  - flake8
