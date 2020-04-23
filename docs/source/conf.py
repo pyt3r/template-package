@@ -10,19 +10,27 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+
+import os
+import sys
+import yaml
+from io import open
+here = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(here, '..', '..'))
+meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
+
+
+# -- Master document --------------------------------------------------------------
+master_doc = 'index'
 
 
 # -- Project information -----------------------------------------------------
-
-project = 'template'
-copyright = '2020, pyt3r'
-author = 'pyt3r'
+author = meta['about']['author']
+project = meta['package']['name']
+copyright = f'2020, {author}'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.4'
+release = str(meta['package']['version'])
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,6 +39,7 @@ release = '0.0.4'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -53,3 +62,4 @@ html_theme = 'alabaster'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
