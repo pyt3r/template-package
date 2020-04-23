@@ -2,7 +2,6 @@
 
 trigger:
   - master
-  - makefile+azure
 
 strategy:
   matrix:
