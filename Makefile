@@ -1,5 +1,11 @@
 PACKAGE_NAME=template
 
+test-env:
+	conda env create --file ci/test-env-requirements.yml
+
+add-packages:
+	conda install autopep8 -y
+
 pep8:
 	python -m autopep8 ${PACKAGE_NAME}/ -a -r --in-place
 
@@ -26,7 +32,6 @@ test-package:
 	conda uninstall ${PACKAGE_NAME} -y --force && \
 	cd ..
 
-
 docs:
 	cd docs/ && \
 	make html && \
@@ -40,4 +45,4 @@ clean:
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/
 
-.PHONY: pep8 lint test conda-build-and-install test-package docs clean
+.PHONY: test-env add-packages pep8 lint test conda-build-and-install test-package docs clean
