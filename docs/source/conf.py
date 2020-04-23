@@ -13,11 +13,11 @@
 
 import os
 import sys
-import yaml
-from io import open
 here = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(here, '..', '..'))
-meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
+# from io import open
+# import yaml
+# meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
 
 
 # -- Master document --------------------------------------------------------------
@@ -25,12 +25,15 @@ master_doc = 'index'
 
 
 # -- Project information -----------------------------------------------------
-author = meta['about']['author']
-project = meta['package']['name']
-copyright = f'2020, {author}'
+# author = meta['about']['author']
+# project = meta['package']['name']
+# copyright = f'2020, {author}'
+# release = str(meta['package']['version'])
 
-# The full version, including alpha/beta/rc tags
-release = str(meta['package']['version'])
+author = 'pyt3r'
+project = 'template'
+copyright = f'2020, {author}'
+release = '0.0.4dev'
 
 
 # -- General configuration ---------------------------------------------------
