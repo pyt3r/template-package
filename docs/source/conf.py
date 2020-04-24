@@ -49,6 +49,7 @@ extensions = [
     'sphinx_gallery.gen_gallery',
     'sphinx.ext.napoleon',
     #'sphinx.ext.intersphinx',
+    'rst2pdf.pdfbuilder',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -88,3 +89,7 @@ sphinx_gallery_conf = {
     'doc_module': ('template'),
 }
 
+
+# -- Options for PDF output -------------------------------------------------
+
+pdf_documents = [('index', 'template', 'template-package', 'pyt3r')]
