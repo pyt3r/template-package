@@ -50,7 +50,7 @@ Features
 
 * invoke a simple `conda-build`_ recipe
 * trigger a simple CI `Azure Pipeline`_ to build, test, and publish a conda package artifact, which can be uploaded to `Anaconda Cloud`_
-* trigger and publish `Read the Docs`_ builds
+* build and publish a `Read the Docs`_ template
 
 .. _conda-build: https://docs.conda.io/projects/conda-build/en/latest/
 .. _Azure Pipeline: https://dev.azure.com/pyt3r/template/_build
@@ -109,31 +109,29 @@ Conda Build
 
 
 
-Azure Pipelines
+Azure
 ################
 
 Each commit (and PR) to the master branch invokes the `azure-pipelines.yml`_ script, which automates the Steps 1 through 3 above.
 
-.. _azure-pipelines.yml: azure-pipelines.yml
 
 The pipeline concludes by publishing the coverage report and conda package artifact on `Azure`_:
 
-.. _Azure: https://dev.azure.com/pyt3r/template/_build
+.. image:: images/artifacts.png
 
-
-.. image:: images/artifacts1.png
-   :align: center
-
-.. image:: images/artifacts2.png
-   :align: center
-
-
-Artifact
-################
 Upon the conclusion of the pipeline, users may access and upload the published artifact (a conda package) to `Anaconda Cloud`_ where it may be installed as follows::
 
     $ conda install -c pyt3r template
 
+.. _azure-pipelines.yml: azure-pipelines.yml
+.. _Azure: https://dev.azure.com/pyt3r/template/_build
+
+Read The Docs
+################
+
+Each commit (and PR) to the master branch invokes the `.readthedocs.yml`_ script, and publishes the html artifact to `Read the Docs`_
+
+.. _.readthedocs.yml: .readthedocs.yml
 
 Author
 ################
