@@ -13,13 +13,12 @@
 
 import os
 import sys
+from io import open
+import yaml
 import sphinx_rtd_theme
-
 here = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(here, '..', '..'))
-# from io import open
-# import yaml
-# meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
+meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
 
 
 # -- Master document --------------------------------------------------------------
@@ -27,15 +26,10 @@ master_doc = 'index'
 
 
 # -- Project information -----------------------------------------------------
-# author = meta['about']['author']
-# project = meta['package']['name']
-# copyright = f'2020, {author}'
-# release = str(meta['package']['version'])
-
-author = 'pyt3r'
-project = 'template'
+author = meta['about']['author']
+project = meta['package']['name']
 copyright = f'2020, {author}'
-release = '0.0.4dev'
+release = str(meta['package']['version'])
 
 
 # -- General configuration ---------------------------------------------------
@@ -90,6 +84,5 @@ sphinx_gallery_conf = {
 }
 
 
-# -- Options for PDF output -------------------------------------------------
-
-pdf_documents = [('index', 'template', 'template-package', 'pyt3r')]
+# -- Options for PDF output -------------------------------------------------s
+pdf_documents = [('index', project, release, author)]
