@@ -2,7 +2,7 @@
 template-package : python + azure + conda + docs
 =============================================================
 
-The template-package is a boilerplate python repo for setting up a CI pipeline
+The template-package is a sample repo for setting up CI pipelines.
 
 .. badges
 
@@ -50,10 +50,12 @@ Features
 
 * invoke a simple `conda-build`_ recipe
 * trigger a simple CI `Azure Pipeline`_ to build, test, and publish a conda package artifact, which can be uploaded to `Anaconda Cloud`_
+* trigger and publish `Read the Docs`_ builds
 
 .. _conda-build: https://docs.conda.io/projects/conda-build/en/latest/
 .. _Azure Pipeline: https://dev.azure.com/pyt3r/template/_build
 .. _Anaconda Cloud: https://anaconda.org/pyt3r/template
+.. _Read the Docs: https://template-package.readthedocs.io
 
 Prerequisites
 ################
