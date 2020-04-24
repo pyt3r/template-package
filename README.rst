@@ -120,12 +120,10 @@ The pipeline concludes by publishing the coverage report and conda package artif
 
 
 .. image:: images/artifacts1.png
-   :width: 35 %
-   :align: left
+   :align: center
 
 .. image:: images/artifacts2.png
-   :width: 35 %
-   :align: left
+   :align: center
 
 
 Artifact
