@@ -25,5 +25,5 @@ class TemplateClass:
 
         try:
             return self.x + self.y
-        except:
+        except BaseException:
             print('Something went wrong. Make sure x and y are both numbers')
