@@ -45,15 +45,15 @@ The template-package is a boilerplate python repo for setting up a CI pipeline
 
 .. contents:: :local:
 
-
 Features
 ################
 
 * invoke a simple `conda-build`_ recipe
-* trigger a simple CI `Azure Pipeline`_ to build, test, and publish a conda package artifact, which can be uploaded to [Anaconda Cloud](https://anaconda.org/pyt3r/template)
+* trigger a simple CI `Azure Pipeline`_ to build, test, and publish a conda package artifact, which can be uploaded to `Anaconda Cloud`_
 
 .. _conda-build: https://docs.conda.io/projects/conda-build/en/latest/
 .. _Azure Pipeline: https://dev.azure.com/pyt3r/template/_build
+.. _Anaconda Cloud: https://anaconda.org/pyt3r/template
 
 Prerequisites
 ################
@@ -119,11 +119,11 @@ The pipeline concludes by publishing the coverage report and conda package artif
 .. _Azure: https://dev.azure.com/pyt3r/template/_build
 
 
-.. figure:: images/artifacts1.png
-   :scale: 40 %
-
-.. figure:: images/artifacts2.png
-   :scale: 50 %
+.. raw:: html
+    <img src="images/artifacts1.png" width="35%">
+    <br>
+    <br>
+    <img src="images/artifacts2.png" width="35%">
 
 
 Artifact
@@ -132,8 +132,6 @@ Upon the conclusion of the pipeline, users may access and upload the published a
 
     $ conda install -c pyt3r template
 
-
-.. _Anaconda Cloud: https://anaconda.org/pyt3r/template
 
 Author
 ################
