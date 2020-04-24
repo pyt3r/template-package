@@ -19,8 +19,8 @@ class TemplateClass:
 
         Returns
         -------
-        : number
-        sum
+        result : number
+            the sum of x and y
         """
 
         try:

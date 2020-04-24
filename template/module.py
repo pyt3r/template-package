@@ -14,8 +14,8 @@ def covered(string='covered'):
 
     Returns
     -------
-    : int
-    an exit code of 0
+    exit code : int
+              0
     """
     print(string)
     return 0
@@ -30,7 +30,6 @@ def uncovered():
 
     Returns
     -------
-    : None
-    nothing
+    Nothing : None
     """
     pass
