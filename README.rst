@@ -119,11 +119,13 @@ The pipeline concludes by publishing the coverage report and conda package artif
 .. _Azure: https://dev.azure.com/pyt3r/template/_build
 
 
-.. raw:: html
-    <img src="images/artifacts1.png" width="35%">
-    <br>
-    <br>
-    <img src="images/artifacts2.png" width="35%">
+.. image:: images/artifacts1.png
+   :width: 35 %
+   :align: left
+
+.. image:: images/artifacts2.png
+   :width: 35 %
+   :align: left
 
 
 Artifact
