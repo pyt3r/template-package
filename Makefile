@@ -5,7 +5,8 @@ test-env:
 
 add-packages:
 	conda install autopep8 sphinx -y
-	pip install sphinx-rtd-theme
+	conda install pandas matplotlib -y
+	pip install sphinx-rtd-theme sphinx_gallery pillow
 
 pep8:
 	python -m autopep8 ${PACKAGE_NAME}/ -a -r --in-place

@@ -1,20 +1,13 @@
-template-package
-=================
+Welcome to template-package!
+=============================
 
-This is a template python example::
+This is template documentation for a template-package.
 
-    print 'hello world'
-    >> hello world
-
-Table of Contents
-^^^^^^^^^^^^^^^^^^
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 1
+   :caption: Contents:
 
-   modules
-
-Indices and tables
-^^^^^^^^^^^^^^^^^^^
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   getting_started
+   function
+   class
+   examples/index

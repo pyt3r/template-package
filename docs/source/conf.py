@@ -13,13 +13,13 @@
 
 import os
 import sys
+import sphinx_rtd_theme
+
 here = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(here, '..', '..'))
 # from io import open
 # import yaml
 # meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
-
-import sphinx_rtd_theme
 
 
 # -- Master document --------------------------------------------------------------
@@ -46,6 +46,9 @@ release = '0.0.4dev'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx_rtd_theme',
+    'sphinx_gallery.gen_gallery',
+    'sphinx.ext.napoleon',
+    #'sphinx.ext.intersphinx',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -62,9 +65,26 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+
 html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# sphinx-gallery configuration
+sphinx_gallery_conf = {
+    # path to your example scripts
+    'examples_dirs': [ os.path.join('..', '..', 'examples') ],
+    # path to where to save gallery generated output
+    'gallery_dirs': ['examples'],
+    # specify that examples should be ordered according to filename
+    #'within_subsection_order': FileNameSortKey,
+    # directory where function granular galleries are stored
+    #'backreferences_dir': 'gen_modules/backreferences',
+    # Modules for which function level galleries are created.
+    'doc_module': ('template'),
+}
+
