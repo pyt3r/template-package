@@ -3,9 +3,14 @@ PACKAGE_NAME=template
 test-env:
 	conda env create --file ci/test-env-requirements.yml
 
-add-packages:
-	conda install autopep8 sphinx -y
-	conda install pandas matplotlib -y
+test-env-pip:
+	python -m venv test-env-pip
+
+add-rtd-packages: # read the docs
+	pip install -r ci/rtd-requirements.txt
+
+add-rtd-packages-conda:
+	conda install pyyaml autopep8 sphinx pandas matplotlib -y
 	pip install sphinx-rtd-theme sphinx_gallery pillow rst2pdf
 
 pep8:

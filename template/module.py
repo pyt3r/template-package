@@ -2,6 +2,7 @@
 This is module.py
 """
 
+
 def covered(string='covered'):
     """
     prints a string
@@ -16,7 +17,7 @@ def covered(string='covered'):
     : int
     an exit code of 0
     """
-    print( string )
+    print(string)
     return 0
 
 
