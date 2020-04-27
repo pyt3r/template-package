@@ -2,6 +2,7 @@
 
 trigger:
   - master
+  - ci-enhancements
 
 strategy:
   matrix:
@@ -38,7 +39,7 @@ steps:
 
   - script: |
       source activate test-env
-      make conda-build-and-install
+      make conda-package
     displayName: Build and install the package
 
   - script: |

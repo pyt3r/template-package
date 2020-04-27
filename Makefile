@@ -1,4 +1,5 @@
 PACKAGE_NAME=template
+PACKAGE_PATH=`python -c "import ${PACKAGE_NAME}, os; print(os.path.dirname(${PACKAGE_NAME}.__file__))"`
 
 test-env:
 	conda env create --file ci/test-env-requirements.yml
@@ -20,19 +21,19 @@ lint:
 	python -m flake8 ${PACKAGE_NAME}/ --count --show-source --statistics
 
 test:
-	coverage run -m unittest discover tests/
+	coverage run -m unittest discover tests
 	coverage report -m
 	coverage html
 	coverage xml
 	open htmlcov/index.html
 
-conda-build-and-install:
+conda-package:
 	conda build . --output-folder=./
 	conda install ./**/*.tar.bz2
 
 test-package:
 	cd tests && \
-	coverage run -m --include=**/${PACKAGE_NAME}/* --omit=**/test_*.py unittest discover . && \
+	coverage run -m --source=${PACKAGE_PATH} unittest discover . && \
 	coverage report -m && \
 	coverage html && \
 	coverage xml && \
@@ -55,8 +56,8 @@ docs-latex:
 	cd ..
 
 clean:
-	rm -rf .coverage htmlcov/ coverage.xml tests/.coverage/ tests/htmlcov/ tests/coverage.xml
-	rm -rf channeldata.json index.html noarch/ osx-64/ linux-32/ linux-64/ win-32/ win-64/ icons/
+	rm -rf .coverage htmlcov coverage.xml tests/.coverage tests/htmlcov tests/coverage.xml
+	rm -rf channeldata.json index.html noarch osx-64 linux-32 linux-64 win-32 win-64 icons
 	find . -name "__pycache__" | xargs  rm -rf
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/ docs/source/examples
