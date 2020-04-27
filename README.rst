@@ -2,7 +2,7 @@
 template-package : python + azure + conda + docs
 =============================================================
 
-The template-package is a sample repo for setting up CI pipelines.
+This is a sample repo for demonstrating template CI pipelines.
 
 .. badges
 
@@ -18,44 +18,56 @@ The template-package is a sample repo for setting up CI pipelines.
       - |version| |platform| |downloads|
 
 .. |docs| image:: https://readthedocs.org/projects/template-package/badge/?version=latest
-    :target: https://template-package.readthedocs.io/en/latest/?badge=latest
+    :target: `Read the Docs`_
     :alt: Docs
 
 .. |build| image:: https://img.shields.io/azure-devops/build/pyt3r/template/3
     :alt: Build
-    :target: https://dev.azure.com/pyt3r/template/_build
+    :target: `Azure Pipeline`_
 
 .. |coverage| image:: https://img.shields.io/azure-devops/coverage/pyt3r/template/3
     :alt: Coverage
-    :target: https://dev.azure.com/pyt3r/template/_build
+    :target: `Azure Pipeline`_
 
 .. |version| image:: https://img.shields.io/conda/v/pyt3r/template
     :alt: Version
-    :target: https://anaconda.org/pyt3r/template
+    :target: `Anaconda Cloud`_
 
 .. |platform| image:: https://img.shields.io/conda/pn/pyt3r/template
     :alt: Platform
-    :target: https://anaconda.org/pyt3r/template
+    :target: `Anaconda Cloud`_
 
 .. |downloads| image:: https://img.shields.io/conda/dn/pyt3r/template
     :alt: Platform
-    :target: https://anaconda.org/pyt3r/template
+    :target: `Anaconda Cloud`_
 
-.. badges
+.. end badges
+
+.. links
+
+.. _conda-build: https://docs.conda.io/projects/conda-build/en/latest/
+.. _Azure Pipeline: https://dev.azure.com/pyt3r/template/_build
+.. _Anaconda Cloud: https://anaconda.org/pyt3r/template
+.. _Read the Docs: https://template-package.readthedocs.io
+
+.. _(mini)conda: https://docs.conda.io/en/latest/miniconda.html
+.. _conda-recipe/meta.yaml: conda-recipe/meta.yaml
+.. _azure-pipelines.yml: azure-pipelines.yml
+.. _https://dev.azure.com/pyt3r/template/_build: https://dev.azure.com/pyt3r/template/_build
+.. _https://anaconda.org/pyt3r/template: https://anaconda.org/pyt3r/template
+.. _.readthedocs.yml: .readthedocs.yml
+.. _https://template-package.readthedocs.io: https://template-package.readthedocs.io
+.. _MIT License: LICENSE
+
+.. end links
 
 .. contents:: :local:
 
 Features
 ################
 
-* invoke a simple `conda-build`_ recipe
-* trigger a simple CI `Azure Pipeline`_ to build, test, and publish a conda package artifact, which can be uploaded to `Anaconda Cloud`_
-* build and publish a `Read the Docs`_ template
-
-.. _conda-build: https://docs.conda.io/projects/conda-build/en/latest/
-.. _Azure Pipeline: https://dev.azure.com/pyt3r/template/_build
-.. _Anaconda Cloud: https://anaconda.org/pyt3r/template
-.. _Read the Docs: https://template-package.readthedocs.io
+* triggers a template `Azure Pipeline`_ to build, test, and publish a conda package artifact
+* triggers a template `Read the Docs`_ pipeline to build, publish, and deploy an html artifact
 
 Prerequisites
 ################
@@ -64,16 +76,15 @@ Prerequisites
 * python3.7
 * Unix
 
-.. _(mini)conda: https://docs.conda.io/en/latest/miniconda.html
-
-Conda Build
+Azure Builds
 ################
+
+Each commit (and PR) to the master branch invokes the `azure-pipelines.yml`_ script, which automates Steps 1 through 3 below.
 
 1. Create and activate a conda environment::
 
     $ conda env create --name test-env --file ci/test-env-requirements.yml python=3.7
     $ conda activate test-env
-
 
 2. Build and add the template package to the environment::
 
@@ -93,7 +104,12 @@ Conda Build
 
     (test-env) $ template-entry-point
 
-.. _conda-recipe/meta.yaml: conda-recipe/meta.yaml
+
+The Azure pipeline concludes by publishing the coverage report and conda package artifact to: `https://dev.azure.com/pyt3r/template/_build`_
+
+.. image:: images/artifacts.png
+
+Users may now access and upload the conda artifact to Anaconda Cloud.  The current build is published to: `https://anaconda.org/pyt3r/template`_
 
 5. (Optional) Upload the artifact (requires an Anaconda account)::
 
@@ -104,30 +120,16 @@ Conda Build
     (test-env) $ conda deactivate
     $ echo "..and we're back to normal"
 
-Azure
-################
-
-Each commit (and PR) to the master branch invokes the `azure-pipelines.yml`_ script, which automates the Steps 1 through 3 above.
-
-The pipeline concludes by publishing the coverage report and conda package artifact on `Azure`_:
-
-.. image:: images/artifacts.png
-
-Upon the conclusion of the pipeline, users may access and upload the published artifact (a conda package) to `Anaconda Cloud`_ where it may be installed as follows::
+Once uploaded, the package may be installed as follows::
 
     $ conda install -c pyt3r template
-
-.. _azure-pipelines.yml: azure-pipelines.yml
-.. _Azure: https://dev.azure.com/pyt3r/template/_build
 
 Read The Docs
 ################
 
-Each commit (and PR) to the master branch will also invoke the `.readthedocs.yml`_ script.
+Each commit (and PR) to the master branch will also invoke the `.readthedocs.yml`_ script to build the documentation.
 
-Upon the conclusion of this script, the resulting html artifact is published to `Read the Docs`_
-
-.. _.readthedocs.yml: .readthedocs.yml
+Upon a successful build, the resulting html artifact is deployed to: `https://template-package.readthedocs.io`_
 
 Author
 ################
@@ -138,5 +140,3 @@ License
 ################
 
 * `MIT License`_
-
-.. _MIT License: LICENSE
