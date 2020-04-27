@@ -85,4 +85,4 @@ sphinx_gallery_conf = {
 
 
 # -- Options for PDF output -------------------------------------------------s
-pdf_documents = [('index', project, release, author)]
+pdf_documents = [('index', project, project+release, author)]
