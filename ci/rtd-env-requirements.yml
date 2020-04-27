@@ -3,12 +3,14 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - pandas
-  - matplotlib
+  # build dependencies:
+  - pip
   - pyyaml
   - sphinx
   - sphinx_rtd_theme
   - sphinx-gallery
-  - pip
   - pip:
       - rst2pdf
+  # ./examples dependencies
+  - pandas
+  - matplotlib

@@ -2,9 +2,8 @@ PACKAGE_NAME=template
 PACKAGE_PATH=`python -c "import ${PACKAGE_NAME}, os; print(os.path.dirname(${PACKAGE_NAME}.__file__))"`
 PYVERSION=3.7
 
-
 test-env:
-	conda env create --file ci/test-env-requirements.yml python=${PYVERSION}
+	conda env create --name test-env-${PACKAGE_NAME} --file ci/test-env-requirements.yml python=${PYVERSION}
 
 rtd-env:
 	conda env create --file ci/rtd-env-requirements.yml python=${PYVERSION}
