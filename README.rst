@@ -82,13 +82,12 @@ Conda Build
     (test-env) $ conda build template-package --output-folder=conda-build
     (test-env) $ conda install conda-build/**/template*.tar.bz2
 
-
 3. Run the tests against the template package and view the report::
 
-    (test-env) $ coverage run -m --include=**/template/* --omit=**/test_*.py unittest discover template-package/tests
+    (test-env) $ PACKAGE_PATH=`python -c "import template, os; print(os.path.dirname(template.__file__))"`
+    (test-env) $ coverage run -m --source=${PACKAGE_PATH} unittest discover template-package/tests
     (test-env) $ coverage report -m
     (test-env) $ rm -r .coverage
-
 
 4. (Optional) Test the entry point defined in `conda-recipe/meta.yaml`_::
 
@@ -100,20 +99,15 @@ Conda Build
 
     (test-env) $ anaconda upload conda-build/**/template*.tar.bz2
 
-
 6. (Optional) Deactivate::
 
     (test-env) $ conda deactivate
-   
     $ echo "..and we're back to normal"
-
-
 
 Azure
 ################
 
 Each commit (and PR) to the master branch invokes the `azure-pipelines.yml`_ script, which automates the Steps 1 through 3 above.
-
 
 The pipeline concludes by publishing the coverage report and conda package artifact on `Azure`_:
 
@@ -129,7 +123,9 @@ Upon the conclusion of the pipeline, users may access and upload the published a
 Read The Docs
 ################
 
-Each commit (and PR) to the master branch invokes the `.readthedocs.yml`_ script, and publishes the html artifact to `Read the Docs`_
+Each commit (and PR) to the master branch will also invoke the `.readthedocs.yml`_ script.
+
+Upon the conclusion of this script, the resulting html artifact is published to `Read the Docs`_
 
 .. _.readthedocs.yml: .readthedocs.yml
 
