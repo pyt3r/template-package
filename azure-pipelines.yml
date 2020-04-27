@@ -2,7 +2,6 @@
 
 trigger:
   - master
-  - ci-enhancements
 
 strategy:
   matrix:
@@ -35,17 +34,17 @@ steps:
   - script: |
       source activate test-env
       make lint
-    displayName: Running Linter
+    displayName: Linter
 
   - script: |
       source activate test-env
       make conda-package
-    displayName: Build and install the package
+    displayName: Package
 
   - script: |
       source activate test-env
       make test-package
-    displayName: Run tests against the package
+    displayName: Test Package
 
   - task: PublishCodeCoverageResults@1
     inputs:

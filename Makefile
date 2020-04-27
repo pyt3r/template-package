@@ -1,18 +1,22 @@
 PACKAGE_NAME=template
 PACKAGE_PATH=`python -c "import ${PACKAGE_NAME}, os; print(os.path.dirname(${PACKAGE_NAME}.__file__))"`
+PYVERSION=3.7
+
 
 test-env:
-	conda env create --file ci/test-env-requirements.yml
+	conda env create --file ci/test-env-requirements.yml python=${PYVERSION}
 
-test-env-pip:
-	python -m venv test-env-pip
+rtd-env:
+	conda env create --file ci/rtd-env-requirements.yml python=${PYVERSION}
 
-add-rtd-packages: # read the docs
-	pip install -r ci/rtd-requirements.txt
-
-add-rtd-packages-conda:
-	conda install pyyaml autopep8 sphinx pandas matplotlib -y
-	pip install sphinx-rtd-theme sphinx_gallery pillow rst2pdf
+_pip-env:
+	python -m venv pip-env
+	echo '' && \
+	echo ' # to activate:' && \
+	echo ' #    > source pip-env/bin/activate' && \
+	echo ' # to deactivate:' && \
+	echo ' #    > deactivate' && \
+	echo ''
 
 pep8:
 	python -m autopep8 ${PACKAGE_NAME}/ -a -r --in-place
@@ -62,4 +66,4 @@ clean:
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/ docs/source/examples
 
-.PHONY: test-env add-packages pep8 lint test conda-build-and-install test-package apidoc docs-html docs-pdf docs-latex clean
+.PHONY: test-env rtd-env _pip-env add-packages pep8 lint test conda-package test-package docs-html docs-pdf docs-latex clean
