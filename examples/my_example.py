@@ -1,5 +1,5 @@
 """
-plot.py
+my_example.py
 ==========================
 
 Here is a plot example
