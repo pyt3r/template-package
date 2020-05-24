@@ -80,7 +80,10 @@ sphinx_gallery_conf = {
     # directory where function granular galleries are stored
     #'backreferences_dir': 'gen_modules/backreferences',
     # Modules for which function level galleries are created.
-    'doc_module': ('template'),
+    'doc_module': (project),
+    # include all files in the examples_dirs, except __init__.py
+    'filename_pattern': '/',
+    'ignore_pattern': '__init__\\.py',
 }
 
 
