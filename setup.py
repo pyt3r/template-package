@@ -8,9 +8,9 @@ meta = yaml.load(open(path.join(here, 'conda-recipe', 'meta.yaml'), 'rb'))
 
 package_data = {
     'template': [
-        'data/*.py', # .py must be added if there is no __init__.py
-        'data/*.txt',
-        'data/*.yml', ],
+        path.join('data', '*.py'), # .py must be added if there is no __init__.py
+        path.join('data', '*.txt'),
+        path.join('data', '*.yml'), ],
 }
 
 setup(
