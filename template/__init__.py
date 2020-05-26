@@ -41,14 +41,15 @@ def dumpResourceManifest():
     Returns
     -------
     manifest object : dict
-        manifest object with the following structure
-        {
+
+        manifest object with the following structure:
+
           package_data:
-            [path]: [filename1, filename2, ...]
+              [path]: [filename1, filename2, ...]
 
           unpackage_data:
-            [path]: [filename1, filename2, ...]
-        }
+              [path]: [filename1, filename2, ...]
+
     """
     import os.path
     basename, filename, manifest = getResourceManifest()
