@@ -5,6 +5,9 @@ PYVERSION=3.7
 test-env:
 	conda env create --name test-env-${PACKAGE_NAME} --file ci/test-env-requirements.yml python=${PYVERSION}
 
+remove-test-env:
+	conda env remove --name test-env-${PACKAGE_NAME}
+
 rtd-env:
 	conda env create --file ci/rtd-env-requirements.yml python=${PYVERSION}
 
@@ -65,4 +68,4 @@ clean:
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/ docs/source/examples
 
-.PHONY: test-env rtd-env _pip-env add-packages pep8 lint test conda-package test-package docs-html docs-pdf docs-latex clean
+.PHONY: test-env remove-test-env rtd-env _pip-env add-packages pep8 lint test conda-package test-package docs-html docs-pdf docs-latex clean
