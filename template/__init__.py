@@ -30,7 +30,13 @@ def getResourceManifest():
     here = os.path.abspath(os.path.dirname(__file__))
     basename = os.path.basename(here)
     filename = 'manifest.yaml'
-    manifest = yaml.load(open(os.path.join(here, filename), 'rb'), Loader=yaml.SafeLoader)
+    manifest = yaml.load(
+        open(
+            os.path.join(
+                here,
+                filename),
+            'rb'),
+        Loader=yaml.SafeLoader)
     return basename, filename, manifest
 
 
