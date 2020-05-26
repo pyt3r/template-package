@@ -2,19 +2,18 @@ import yaml
 from setuptools import setup, find_packages
 from os import path
 from io import open
+import importlib
+
 
 here = path.abspath(path.dirname(__file__))
-meta = yaml.load(open(path.join(here, 'conda-recipe', 'meta.yaml'), 'rb'))
+meta = yaml.load(open(path.join(here, 'conda-recipe', 'meta.yaml'), 'rb'), Loader=yaml.SafeLoader)
+name = meta['package']['name']
+package = importlib.import_module(name)
+package_data = package.dumpResourceManifest()
 
-package_data = {
-    'template': [
-        path.join('data', '*.py'), # .py must be added if there is no __init__.py
-        path.join('data', '*.txt'),
-        path.join('data', '*.yml'), ],
-}
 
 setup(
-    name         = meta['package']['name'],
+    name         = name,
     version      = str(meta['package']['version']),
     description  = meta['about']['summary'],
     author       = meta['about']['author'],
