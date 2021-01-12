@@ -58,7 +58,7 @@ class PackageDataHanler:
         walkDir = os.path.join(basedir, filepath)
 
         bad = ['__pycache__']
-        filt = lambda tup: all([b not in tup[0] for b in bad])
+        def filt(tup): return all([b not in tup[0] for b in bad])
 
         arr = []
         for subdir, _, _ in filter(filt, os.walk(walkDir)):
@@ -87,5 +87,11 @@ def getPackageData(dunder_file, filename):
     """
     here = os.path.abspath(os.path.dirname(dunder_file))
     basename = os.path.basename(here)
-    manifest = yaml.load(open(os.path.join(here, filename), 'rb'), Loader=yaml.SafeLoader)
+    manifest = yaml.load(
+        open(
+            os.path.join(
+                here,
+                filename),
+            'rb'),
+        Loader=yaml.SafeLoader)
     return basename, filename, manifest
