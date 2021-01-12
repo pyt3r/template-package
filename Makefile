@@ -45,16 +45,10 @@ test-package:
 	cd ..
 
 docs-html:
-	make docs-sym-link && \
 	cd docs/ && \
 	make html && \
 	open build/html/index.html && \
 	cd ..
-
-docs-sym-link:
-	for name in core_graph graph_of_graphs mimo miso pipeline julius; do \
-  		ln -s ../../../examples/$$name.png docs/source/_static/$$name.png; \
-  	done
 
 docs-pdf:
 	sphinx-build -b pdf docs/source docs/build
