@@ -1,12 +1,10 @@
 PACKAGE_NAME=template
 PACKAGE_PATH=`python -c "import ${PACKAGE_NAME}, os; print(os.path.dirname(${PACKAGE_NAME}.__file__))"`
+TESTS_PATH=${PACKAGE_PATH}/tests
 PYVERSION=3.7
 
 test-env:
 	conda env create --name test-env-${PACKAGE_NAME} --file ci/test-env-requirements.yml python=${PYVERSION}
-
-remove-test-env:
-	conda env remove --name test-env-${PACKAGE_NAME}
 
 rtd-env:
 	conda env create --file ci/rtd-env-requirements.yml python=${PYVERSION}
@@ -27,7 +25,10 @@ lint:
 	python -m flake8 ${PACKAGE_NAME}/ --count --show-source --statistics
 
 test:
-	coverage run -m unittest discover tests
+	coverage run -m \
+		--source=${PACKAGE_PATH} \
+		--omit=${TESTS_PATH}/* \
+		unittest discover ${TESTS_PATH}
 	coverage report -m
 	coverage html
 	coverage xml
@@ -38,19 +39,22 @@ conda-package:
 	conda install ./**/*.tar.bz2
 
 test-package:
-	cd tests && \
-	coverage run -m --source=${PACKAGE_PATH} unittest discover . && \
-	coverage report -m && \
-	coverage html && \
-	coverage xml && \
+	cd ${TESTS_PATH} && \
+	python -c "import ${PACKAGE_NAME}; ${PACKAGE_NAME}.test('unittests')" && \
 	conda uninstall ${PACKAGE_NAME} -y --force && \
 	cd ..
 
 docs-html:
+	make docs-sym-link && \
 	cd docs/ && \
 	make html && \
 	open build/html/index.html && \
 	cd ..
+
+docs-sym-link:
+	for name in core_graph graph_of_graphs mimo miso pipeline julius; do \
+  		ln -s ../../../examples/$$name.png docs/source/_static/$$name.png; \
+  	done
 
 docs-pdf:
 	sphinx-build -b pdf docs/source docs/build
@@ -61,11 +65,17 @@ docs-latex:
 	make latexpdf && \
 	cd ..
 
+git-merge: # if your changes are in develop...
+	git checkout develop
+	git pull
+	git merge origin/master
+	git push origin develop
+
 clean:
-	rm -rf .coverage htmlcov coverage.xml tests/.coverage tests/htmlcov tests/coverage.xml
+	rm -rf .coverage htmlcov coverage.xml
 	rm -rf channeldata.json index.html noarch osx-64 linux-32 linux-64 win-32 win-64 icons
 	find . -name "__pycache__" | xargs  rm -rf
 	find . -name "*.pyc" | xargs rm -rf
 	rm -rf docs/build/ docs/source/examples
 
-.PHONY: test-env remove-test-env rtd-env _pip-env add-packages pep8 lint test conda-package test-package docs-html docs-pdf docs-latex clean
+.PHONY: test-env rtd-env _pip-env add-packages pep8 lint test conda-package test-package docs-sym-link docs-pdf docs-html docs-latex git-merge clean

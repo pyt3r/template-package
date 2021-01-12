@@ -83,26 +83,16 @@ Each commit (and PR) to the master branch invokes the `azure-pipelines.yml`_ scr
 
 1. Create and activate a conda environment::
 
-    $ conda env create --name test-env --file ci/test-env-requirements.yml python=3.7
+    $ make test-env
     $ conda activate test-env
 
 2. Build and add the template package to the environment::
 
-    (test-env) $ cd ..
-    (test-env) $ mkdir conda-build
-    (test-env) $ conda build template-package --output-folder=conda-build
-    (test-env) $ conda install conda-build/**/template*.tar.bz2
+    (test-env) $ make conda-package
 
 3. Run the tests against the template package and view the report::
 
-    (test-env) $ PACKAGE_PATH=`python -c "import template, os; print(os.path.dirname(template.__file__))"`
-    (test-env) $ coverage run -m --source=${PACKAGE_PATH} unittest discover template-package/tests
-    (test-env) $ coverage report -m
-    (test-env) $ rm -r .coverage
-
-4. (Optional) Test the entry point defined in `conda-recipe/meta.yaml`_::
-
-    (test-env) $ template-entry-point
+    (test-env) $ make test-package
 
 
 The Azure pipeline concludes by publishing the coverage report and conda package artifact to: `https://dev.azure.com/pyt3r/template/_build`_
@@ -111,18 +101,15 @@ The Azure pipeline concludes by publishing the coverage report and conda package
 
 Users may now access and upload the conda artifact to Anaconda Cloud.  The current build is published to: `https://anaconda.org/pyt3r/template`_
 
-5. (Optional) Upload the artifact (requires an Anaconda account)::
+4. (Optional) Upload the artifact (requires an Anaconda account)::
 
-    (test-env) $ anaconda upload conda-build/**/template*.tar.bz2
+    (test-env) $ anaconda upload ./template*.tar.bz2
 
-6. (Optional) Deactivate::
-
-    (test-env) $ conda deactivate
-    $ echo "..and we're back to normal"
-
-Once uploaded, the package may be installed as follows::
+   Once uploaded, the package may be installed as follows::
 
     $ conda install -c pyt3r template
+
+
 
 Read The Docs
 ################
