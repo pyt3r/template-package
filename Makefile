@@ -67,6 +67,7 @@ git-merge: # if your changes are in develop...
 
 clean:
 	rm -rf .coverage htmlcov coverage.xml
+	rm -rf ${TESTS_PATH}/.coverage ${TESTS_PATH}/htmlcov ${TESTS_PATH}/coverage.xml
 	rm -rf channeldata.json index.html noarch osx-64 linux-32 linux-64 win-32 win-64 icons
 	find . -name "__pycache__" | xargs  rm -rf
 	find . -name "*.pyc" | xargs rm -rf
