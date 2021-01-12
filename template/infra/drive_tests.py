@@ -45,4 +45,6 @@ class Driver:
             include = j(source, '*')
             omit = j(testDir, '*')
             report = cov.report(include=include, omit=omit)
+            cov.html_report(include=include, omit=omit)
+            cov.xml_report(include=include, omit=omit)
         return isFailure, result, report
