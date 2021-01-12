@@ -2,7 +2,6 @@ import sys
 import os
 import coverage
 import unittest
-import unittest
 
 
 def drive_tests(engine, package):
