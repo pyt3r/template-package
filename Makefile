@@ -4,7 +4,7 @@ TESTS_PATH=${PACKAGE_PATH}/tests
 PYVERSION=3.7
 
 test-env:
-	conda env create --name test-env-${PACKAGE_NAME} --file ci/test-env-requirements.yml python=${PYVERSION}
+	conda env create --file ci/test-env-requirements.yml python=${PYVERSION}
 
 rtd-env:
 	conda env create --file ci/rtd-env-requirements.yml python=${PYVERSION}
