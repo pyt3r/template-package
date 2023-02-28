@@ -6,11 +6,11 @@ dependencies:
   # build dependencies:
   - pip
   - pyyaml
-  - sphinx
+  - sphinx=2.1.4
   - sphinx_rtd_theme
   - sphinx-gallery
   - pip:
-      - rst2pdf
+      - rst2pdf=0.98
   # ./examples dependencies
   - pandas
   - matplotlib
