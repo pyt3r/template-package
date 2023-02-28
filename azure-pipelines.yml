@@ -28,6 +28,7 @@ steps:
     displayName: Add conda to PATH
 
   - script: |
+      conda update conda -y
       conda env create --name test-env-template --quiet --file ci/test-env-requirements.yml python=$(pythonVersion)
     displayName: Conda Env
 
