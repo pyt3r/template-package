@@ -4,13 +4,14 @@ channels:
   - defaults
 dependencies:
   # build dependencies:
+  - python=3.8
   - pip
   - pyyaml
-  - sphinx=2.1.4
+  - sphinx
   - sphinx_rtd_theme
   - sphinx-gallery
   - pip:
-      - rst2pdf=0.98
+      - rst2pdf
   # ./examples dependencies
   - pandas
   - matplotlib
