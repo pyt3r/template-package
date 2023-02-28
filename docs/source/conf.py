@@ -18,7 +18,7 @@ import yaml
 import sphinx_rtd_theme
 here = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(here, '..', '..'))
-meta = yaml.load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
+meta = yaml.safe_load(open(os.path.join(here, '..', '..', 'conda-recipe', 'meta.yaml'), 'rb'))
 
 
 # -- Master document --------------------------------------------------------------
