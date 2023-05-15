@@ -7,7 +7,7 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-latest'
-      pythonVersion: '3.8.*'
+      pythonVersion: '3.8'
 
 pool:
   vmImage: $(imageName)
@@ -29,7 +29,7 @@ steps:
 
   - script: |
       conda update conda -y
-      conda env create --name test-env-template --quiet --file ci/test-env-requirements.yml python=$(pythonVersion)
+      conda env create --name test-env-template --file ci/test-env-requirements.yml
     displayName: Conda Env
 
   - script: |
