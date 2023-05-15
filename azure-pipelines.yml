@@ -7,7 +7,7 @@ strategy:
   matrix:
     linux:
       imageName: 'ubuntu-latest'
-      pythonVersion: '3.8'
+      pythonVersion: '3.8.*'
 
 pool:
   vmImage: $(imageName)

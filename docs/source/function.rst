@@ -4,10 +4,8 @@ Functions
 These are the functions for the tempate package:
 
 
-.. autofunction:: template.getResourceManifest
+.. autofunction:: template.dumpPackageData
 
-.. autofunction:: template.dumpResourceManifest
-
-.. autofunction:: template.module.covered
+.. autofunction:: template.module.test
 
 .. autofunction:: template.module.uncovered
